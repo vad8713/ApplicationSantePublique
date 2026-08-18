@@ -24,10 +24,10 @@ Projet réalisé dans le cadre de la formation Ingénieur Machine Learning (Open
 - [Métrique obtenue si applicable, ex : score de silhouette = 0.42]
 
 ## 📁 Structure du repo
-├── sante_1_notebook_nettoyage.ipynb     # Selection et nettoyage des données
-├── sante_2_notebook_exploration.ipynb   # Analyse complète
-├── sante_3_presentation.pptx            # Fichier de présentation
-├── data/                                # Données (non incluses pour confidentialité)
+├── sante_1_notebook_nettoyage.ipynb $nbsp # Sélection et nettoyage des données  
+├── sante_2_notebook_exploration.ipynb    # Analyse complète  
+├── sante_3_presentation.pptx              # Fichier de présentation  
+├── data/                                # Données (non incluses pour confidentialité)  
 └── README.md
 
 ## 👤 Auteur
