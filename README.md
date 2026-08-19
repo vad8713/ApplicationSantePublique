@@ -1,35 +1,47 @@
-# 🧠 [Concevez une application au service de la santé publique]
-> *Ex : Le nutriscore est il représentatif*
+# 🧀 Application pour la Santé Publique — Analyse Nutritionnelle des Fromages
 
 ## 📌 Contexte
-Projet réalisé dans le cadre de la formation Ingénieur Machine Learning (OpenClassrooms, RNCP niv. 7).
-[1-2 phrases sur le problème métier à résoudre]
+Projet réalisé dans le cadre de la formation Ingénieur Machine Learning
+(OpenClassrooms, RNCP niv. 7).
+
+L'objectif est d'explorer la base de données Open Food Facts afin
+d'identifier des indicateurs nutritionnels pertinents pour une application
+de santé publique, en se concentrant sur la famille des fromages.
 
 ## 🎯 Objectif
-[Ex : Identifier des segments de clients homogènes pour personnaliser les actions marketing.]
+Analyser la composition nutritionnelle de fromages (lait cru, thermisé
+et pasteurisés) pour dégager des tendances, identifier des variables
+explicatives du Nutri-Score, et produire des visualisations exploitables
+par une application grand public.
 
 ## 🛠️ Stack technique
 - **Langage** : Python
-- **Librairies** : Pandas, NumPy, Matplotlib, Seaborn
+- **Librairies** : Pandas, NumPy, Matplotlib, Seaborn, SciPy, Missingno
 - **Environnement** : Jupyter Notebook
 
 ## 📊 Approche
-1. Exploration et nettoyage des données (EDA)
-2. [Étape clé de ton approche]
-3. Modélisation : [algorithme utilisé]
-4. Évaluation et interprétation des résultats
 
-## 📈 Résultats
-- [Résultat concret, ex : 4 segments identifiés avec des profils comportementaux distincts]
-- [Métrique obtenue si applicable, ex : score de silhouette = 0.42]
+### Notebook 1 — Nettoyage des données
+1. Import de la base Open Food Facts (320 772 produits, 162 variables)
+2. Filtrage sur les fromages : lait cru, thermisé, pasteurisés → **1 732 produits**
+3. Sélection de 27 variables nutritionnelles pertinentes
+   (énergie, graisses, protéines, sel, vitamines, minéraux...)
+4. Traitement des valeurs manquantes (visualisation via Missingno)
+
+### Notebook 2 — Exploration des données
+1. **Analyse univariée** : distribution du Nutri-Score (majoritairement D),
+   histogrammes avec moyennes et médianes pour chaque variable quantitative
+2. **Analyse bivariée** : nuages de points croisant l'énergie avec
+   les autres variables nutritionnelles
+
+## 📈 Résultats clés
+- **89 %** des fromages ont un Nutri-Score D ou E (produits peu favorables)
+- Les graisses saturées et l'énergie sont fortement corrélées
+- Les protéines constituent un signal nutritionnel positif
+  pour différencier les fromages
 
 ## 📁 Structure du repo
-├── sante_1_notebook_nettoyage.ipynb $nbsp # Sélection et nettoyage des données  
-├── sante_2_notebook_exploration.ipynb    # Analyse complète  
-├── sante_3_presentation.pptx              # Fichier de présentation  
-├── data/                                # Données (non incluses pour confidentialité)  
+ApplicationSantePublique/  
+├── sante_1_notebook_nettoyage.ipynb # Nettoyage et préparation  
+├── sante_2_notebook_exploration.ipynb # Analyse exploratoire  
 └── README.md
-
-## 👤 Auteur
-David Depouez — [LinkedIn](https://linkedin.com/in/daviddepouez) | 
-[GitHub](https://github.com/vad8713)
