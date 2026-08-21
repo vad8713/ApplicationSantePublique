@@ -24,6 +24,7 @@ Le projet s'appuie sur un extrait du jeu de données ouvert **[Open Food Facts](
 |---|---|
 | `sante_1_notebook_nettoyage.ipynb` | Sélection des produits et variables pertinentes, suppression des variables trop incomplètes ou corrélées, traitement des valeurs aberrantes (plafonnement des outliers) et imputation des valeurs manquantes (médiane, régression linéaire, kNN). Export du jeu de données nettoyé au format CSV. |
 | `sante_2_notebook_exploration.ipynb` | Analyse exploratoire du jeu de données nettoyé : analyses univariée (histogrammes, camembert du Nutri-Score), bivariée (nuages de points), multivariée (heatmap de corrélation, ACP, cercles des corrélations) et test ANOVA entre variables quantitatives et Nutri-Score. |
+| `sante_3_presentation.pptx` | Fichier de présentation. |
 
 ## 🧰 Technologies utilisées
 
