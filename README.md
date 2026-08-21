@@ -1,47 +1,45 @@
-# 🧀 Application pour la Santé Publique — Analyse Nutritionnelle des Fromages
+# 🧀 Concevez une application au service de la santé publique
+
+Nettoyage et analyse exploratoire d'un jeu de données nutritionnelles issu d'Open Food Facts (catégorie fromages), en vue de la conception d'une application aidant les usagers à mieux s'alimenter.
 
 ## 📌 Contexte
-Projet réalisé dans le cadre de la formation Ingénieur Machine Learning
-(OpenClassrooms, RNCP niv. 7).
 
-L'objectif est d'explorer la base de données Open Food Facts afin
-d'identifier des indicateurs nutritionnels pertinents pour une application
-de santé publique, en se concentrant sur la famille des fromages.
+L'agence **Santé publique France** souhaite exploiter le jeu de données ouvert **Open Food Facts** pour, à terme, proposer une application permettant d'améliorer les habitudes alimentaires des utilisateurs. Avant toute idée d'application, il est nécessaire d'évaluer la qualité de ce jeu de données, de le nettoyer, puis de l'explorer pour identifier les variables pertinentes et les relations qui pourraient être exploitées.
 
-## 🎯 Objectif
-Analyser la composition nutritionnelle de fromages (lait cru, thermisé
-et pasteurisés) pour dégager des tendances, identifier des variables
-explicatives du Nutri-Score, et produire des visualisations exploitables
-par une application grand public.
+## 🎯 Objectifs
 
-## 🛠️ Stack technique
-- **Langage** : Python
-- **Librairies** : Pandas, NumPy, Matplotlib, Seaborn, SciPy, Missingno
-- **Environnement** : Jupyter Notebook
+- Sélectionner un sous-ensemble de produits pertinent (ici, la catégorie des **fromages**) et les variables nutritionnelles à étudier.
+- Traiter les valeurs manquantes, aberrantes et atypiques du jeu de données.
+- Imputer les valeurs manquantes restantes selon plusieurs stratégies (médiane, régression linéaire, k plus proches voisins).
+- Réaliser une analyse exploratoire univariée, bivariée et multivariée des variables nutritionnelles.
+- Étudier les liens entre variables quantitatives et le Nutri-Score (ACP, ANOVA).
 
-## 📊 Approche
+## 🗂️ Données
 
-### Notebook 1 — Nettoyage des données
-1. Import de la base Open Food Facts (320 772 produits, 162 variables)
-2. Filtrage sur les fromages : lait cru, thermisé, pasteurisés → **1 732 produits**
-3. Sélection de 27 variables nutritionnelles pertinentes
-   (énergie, graisses, protéines, sel, vitamines, minéraux...)
-4. Traitement des valeurs manquantes (visualisation via Missingno)
+Le projet s'appuie sur un extrait du jeu de données ouvert **[Open Food Facts](https://world.openfoodfacts.org/)**, filtré sur la catégorie des fromages (1732 produits dans l'échantillon étudié). Les données ne sont pas incluses dans ce dépôt.
 
-### Notebook 2 — Exploration des données
-1. **Analyse univariée** : distribution du Nutri-Score (majoritairement D),
-   histogrammes avec moyennes et médianes pour chaque variable quantitative
-2. **Analyse bivariée** : nuages de points croisant l'énergie avec
-   les autres variables nutritionnelles
+## 📁 Structure du projet
 
-## 📈 Résultats clés
-- **89 %** des fromages ont un Nutri-Score D ou E (produits peu favorables)
-- Les graisses saturées et l'énergie sont fortement corrélées
-- Les protéines constituent un signal nutritionnel positif
-  pour différencier les fromages
+| Fichier | Description |
+|---|---|
+| `sante_1_notebook_nettoyage.ipynb` | Sélection des produits et variables pertinentes, suppression des variables trop incomplètes ou corrélées, traitement des valeurs aberrantes (plafonnement des outliers) et imputation des valeurs manquantes (médiane, régression linéaire, kNN). Export du jeu de données nettoyé au format CSV. |
+| `sante_2_notebook_exploration.ipynb` | Analyse exploratoire du jeu de données nettoyé : analyses univariée (histogrammes, camembert du Nutri-Score), bivariée (nuages de points), multivariée (heatmap de corrélation, ACP, cercles des corrélations) et test ANOVA entre variables quantitatives et Nutri-Score. |
 
-## 📁 Structure du repo
-ApplicationSantePublique/  
-├── sante_1_notebook_nettoyage.ipynb # Nettoyage et préparation  
-├── sante_2_notebook_exploration.ipynb # Analyse exploratoire  
-└── README.md
+## 🧰 Technologies utilisées
+
+- **Python**, **Pandas**, **NumPy**
+- **Matplotlib**, **Seaborn**, **missingno** (visualisation, valeurs manquantes)
+- **Scikit-learn** : `KNNImputer`, `linear_model` (régression linéaire), `PCA`, `StandardScaler`
+- **SciPy** (`scipy.stats`) : test ANOVA
+
+## 🔍 Démarche
+
+1. **Sélection** : filtrage des produits sur la catégorie fromages, exclusion des fromages blancs, sélection des variables nutritionnelles pertinentes a priori.
+2. **Nettoyage** : suppression des variables avec plus de 50 % de valeurs manquantes, vérification de la validité des plages de valeurs (taux entre 0 et 100, énergie positive, Nutri-Score entre A et E), suppression des variables trop corrélées (ex. sodium vs sel).
+3. **Traitement des outliers** : détection par écart interquartile et boxplots, plafonnement des valeurs extrêmes plutôt qu'exclusion, avec vérification manuelle des cas les plus extrêmes sur Open Food Facts.
+4. **Imputation des valeurs manquantes** : combinaison de trois méthodes selon les variables — valeur médiane/moyenne, régression linéaire entre variables corrélées (ex. matières grasses saturées à partir des matières grasses totales), puis imputation par k plus proches voisins (kNN) pour les dernières valeurs manquantes.
+5. **Analyse exploratoire** : études univariée, bivariée et multivariée (heatmap, ACP avec cercles des corrélations, ANOVA) pour comprendre la structure des données et les variables discriminantes du Nutri-Score.
+
+## 👤 Auteur
+
+David Depouez — Projet réalisé dans le cadre de la formation *Ingénieur Machine Learning (OpenClassrooms, RNCP niv. 7)*.
